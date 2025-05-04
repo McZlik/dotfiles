@@ -1,47 +1,202 @@
 {
-    "position": "top",
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["network", "pulseaudio", "battery", "clock", "custom/power"],
-    "clock": {
-      "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
-      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  "position": "top",
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  // "modules-right": ["network", "pulseaudio", "battery", "clock", "custom/power"],
+  "modules-right": [
+    "mpd",
+    "pulseaudio",
+    "bluetooth",
+    "network",
+    // "keyboard-state",
+    "battery",
+    "clock",
+    "tray",
+    "group/hardware",
+    "group/power",
+    "custom/power"
+  ],
+  // Workspaces
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    }
+  },
+  // Hyprland Window
+  "hyprland/window": {
+    "format": "{title}",
+    "icon": false,
+    "rewrite": {
+      // "(.*) — Mozilla Firefox": "🌎 $1",
+      "(.*) - Brave": "$1",
+      "(.*) - Chromium": "$1",
+      "(.*) - Brave Search": "$1",
+      "(.*) - Outlook": "$1",
+      "(.*) Microsoft Teams": "$1"
     },
-    "battery": {
-      "states": {
-        "warning": 30,
-        "critical": 15
-      },
-      "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
-      "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
-      "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
-      "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-      "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-      "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
-      "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-      "format-icons": ["", "", "", "", ""],
-      "tooltip-format": "{time}"
+    "separate-outputs": true
+  },
+  "clock": {
+    "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
     },
-    "network": {
-      "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
-      "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
-      "format-linked": "{ifname} (No IP) ",
-      "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
-      "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+    "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
+    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
+    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
+    "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
+    "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tooltip-format": "{time}"
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": " {signalStrength}%",
+    "format-ethernet": " {ipaddr}",
+    "format-disconnected": "Not connected", //An empty format will hide the module.
+    "tooltip-format": " {ifname} via {gwaddri}",
+    "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": " {ifname} ({ipaddr}/{cidr})",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "on-click": "nm-connection-editor"
+  },
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": "",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
-    "pulseaudio": {
-        "format": "{icon}  {volume}%",
-        "format-muted": "",
-        "format-icons": {
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
+    "on-click": "pavucontrol"
+  },
+  // Bluetooth
+  "bluetooth": {
+    // "format-connected": "Connected",
+    // "format-disconnected": "disconnected",
+    // "format-disabled": "Disabled",
+    // "format": " {status}",
+    // "format-off": "Off",
+    // "format-on": "On",
+    "interval": 30,
+    "on-click": "blueman-manager",
+    "format-no-controller": "x"
+  },
+  // Keyboard State
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    }
+  },
+  // System tray
+  "tray": {
+    // "icon-size": 21,
+    "spacing": 10
+  },
+  // System
+  "custom/system": {
+    "format": "",
+    "tooltip": false
+  },
+  // CPU
+  "cpu": {
+    "format": " {usage}% ",
+    "on-click": "kitty -e top"
+  },
+  // Memory
+  "memory": {
+    "format": " {}% ",
+    "on-click": "kitty -e top"
+  },
+  // Harddisc space used
+  "disk": {
+    "interval": 30,
+    "format": " {percentage_used}% ",
+    "path": "/",
+    "on-click": "kitty -e top"
+  },
+  "hyprland/language": {
+    "format": "/ K {short}"
+  },
+  // Other
+  "user": {
+    "format": "{user}",
+    "interval": 60,
+    "icon": false,
+  },
+  // Idle Inhibator
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "tooltip": true,
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
     },
-    // Power Menu
-    "custom/power": {
-      "format": "",
-      "tooltip-format": "Powermenu",
-      "on-click": "wlogout -b 4",
-      "tooltip": false
+    "on-click-right": "hyprlock"
+  },
+  // Power Menu
+  "custom/power": {
+    "format": "",
+    "tooltip-format": "Powermenu",
+    "tooltip": true,
+    "menu": "on-click",
+    "menu-file": "~/.config/waybar/power_menu.xml",
+    "menu-actions": {
+      "shutdown": "shutdown",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "hibernate": "systemctl hibernate",
+      "lock": "hypridle"
     },
+  },
+  // GROUPS
+  // Group Hardware
+  "group/hardware": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "not-hardware",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/system",
+      "disk",
+      "cpu",
+      "memory"
+      // "hyprland/language"
+    ]
+  },
 }
