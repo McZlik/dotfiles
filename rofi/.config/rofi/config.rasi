@@ -1,7 +1,7 @@
 @import "catppuccin-frappe"
 
 configuration{
-    modi: "drun,run,window,combi";
+    modi: "combi,drun,run,window";
     font: "Fira Sans 12";
     icon-theme: "kora";
     show-icons: true;
