@@ -1,5 +1,6 @@
 {
   "position": "top",
+  "layer": "top",
   "modules-left": [
     "hyprland/workspaces"
   ],
@@ -18,6 +19,7 @@
     "custom/notification",
     "group/hardware",
     "power-profiles-daemon",
+    "idle_inhibitor",
     "tray",
     "clock",
     "custom/power",
@@ -163,12 +165,12 @@
   // Idle Inhibator
   "idle_inhibitor": {
     "format": "{icon}",
-    "tooltip": true,
     "format-icons": {
-      "activated": "",
-      "deactivated": ""
+      "activated": "",
+      "deactivated": ""
     },
-    "on-click-right": "hyprlock"
+    "tooltip-format-activated": "Idle Inhibitor Activated",
+    "tooltip-format-deactivated": "Idle Inhibitor Deactivated"
   },
   // Power Menu
   "custom/power": {
@@ -178,8 +180,8 @@
     "menu": "on-click",
     "menu-file": "~/.config/waybar/power_menu.xml",
     "menu-actions": {
-      "shutdown": "shutdown",
-      "reboot": "reboot",
+      "shutdown": "shutdown now",
+      "reboot": "reboot now",
       "suspend": "systemctl suspend",
       "hibernate": "systemctl hibernate",
       "lock": "hypridle"

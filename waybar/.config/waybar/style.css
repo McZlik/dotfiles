@@ -71,6 +71,7 @@ button:hover {
 #mode,
 #scratchpad,
 #power-profiles-daemon,
+#idle_inhibitor,
 #custom-system,
 #custom-power,
 #custom-notification {
@@ -108,12 +109,12 @@ button:hover {
 }
 
 #idle_inhibitor {
-    margin-right: 12px;
-    color: #7cb342;
+    border-bottom: 2px solid @text;
 }
 
 #idle_inhibitor.activated {
     color: @red;
+    border-bottom: 2px solid @red;
 }
 
 #battery {
