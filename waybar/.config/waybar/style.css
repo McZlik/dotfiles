@@ -129,6 +129,22 @@ button:hover {
     margin-right: 0;
 }
 
+#custom-pacman.caution {
+    color: #a6e3a1;
+    /* Green */
+}
+
+#custom-pacman.warning {
+    color: #f9e2af;
+    /* Yellow */
+}
+
+#custom-pacman.critical {
+    color: #f38ba8;
+    /* Red */
+}
+
+
 
 /* Styling for menus */
 menu {

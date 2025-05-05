@@ -16,9 +16,9 @@
     "battery",
     "clock",
     "tray",
+    "custom/pacman",
     "group/hardware",
-    "group/power",
-    "custom/power"
+    "custom/power",
   ],
   // Workspaces
   "hyprland/workspaces": {
@@ -181,6 +181,14 @@
       "hibernate": "systemctl hibernate",
       "lock": "hypridle"
     },
+  },
+  "custom/pacman": {
+    "format": "{}  ",
+    "return-type": "json",
+    "interval": 3600,
+    "exec": "~/.config/waybar/scripts/pacman_updates.py",
+    "on-click": "kitty -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar",
+    "signal": 8
   },
   // GROUPS
   // Group Hardware
