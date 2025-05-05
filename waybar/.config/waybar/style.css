@@ -70,6 +70,7 @@ button:hover {
 #network,
 #mode,
 #scratchpad,
+#power-profiles-daemon,
 #custom-system,
 #custom-power,
 #custom-notification {
@@ -118,6 +119,26 @@ button:hover {
 #battery {
     color: @green;
     border-bottom: 2px solid @green;
+}
+
+#power-profiles-daemon {
+    color: @green;
+    border-bottom: 2px solid @green;
+}
+
+#power-profiles-daemon.performance {
+    color: @maroon;
+    border-bottom: 2px solid @maroon;
+}
+
+#power-profiles-daemon.balanced {
+    color: @yellow;
+    border-bottom: 2px solid @yellow;
+}
+
+#power-profiles-daemon.power-saver {
+    color: @sky;
+    border-bottom: 2px solid @sky;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
