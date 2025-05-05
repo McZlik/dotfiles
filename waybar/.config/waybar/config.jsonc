@@ -10,8 +10,8 @@
   "modules-right": [
     "mpd",
     "pulseaudio",
-    // "bluetooth",
-    // "network",
+    "bluetooth",
+    "network",
     // "keyboard-state",
     "battery",
     "custom/pacman",
@@ -84,7 +84,7 @@
     "tooltip-format-ethernet": " {ifname} ({ipaddr}/{cidr})",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-    "on-click": "nm-connection-editor"
+    "on-click": "iwgtk"
   },
   "pulseaudio": {
     "format": "{icon}  {volume}%",
