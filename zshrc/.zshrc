@@ -1,7 +1,5 @@
 eval "$(starship init zsh)"
 
-alias sudocode='sudo code --user-data-dir="~/.vscode-root"'
-
 # export EDITOR="nvim"
 # export SUDO_EDITOR="$EDITOR"
 # export PGHOST="/var/run/postgresql"
