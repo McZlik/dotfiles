@@ -1,9 +1,3 @@
-echo ":: Stowing dotfiles"
-
-# Get the current working directory
-SCRIPT=$(realpath "$0")
-temp_path=$(dirname "$SCRIPT")
-
 echo "Removing old stows"
 # Remove existing stow directories
 stow -D -t $HOME/.config .config
