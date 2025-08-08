@@ -1,0 +1,9 @@
+# yaml
+# ~/.config/udiskie/config.yml
+program_options:
+  automount: true
+  notify: true
+  tray: true
+device_config:
+  - id_type: usb
+    ignore: false
